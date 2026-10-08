@@ -1,0 +1,39 @@
+experiment:
+  name: "SE3R_MVSE_Combined"
+  description: "Combined decoder and dense prediction MVSE modules"
+  version: "v1"
+
+model:
+  class: "AMB3R_SE_Combined"
+  metric_scale: false
+  se_reduction: 16
+
+freeze:
+  encoder: true
+  decoder: true
+  camera_head: true
+  depth_head: true
+  point_head: true
+  scale_projector: true
+  se_frame: false               # 24 decoder frame SE, trainable
+  se_global: false               # 1 decoder global SE, trainable
+  se_dpt_depth_refinenet: false  # 4 depth inter-RefineNet SE, trainable
+  se_dpt_depth_post_fusion: false # 1 depth post-fusion SE, trainable
+  se_dpt_point_refinenet: false  # 4 point inter-RefineNet SE, trainable
+  se_dpt_point_post_fusion: false # 1 point post-fusion SE, trainable
+
+training:
+  pretrained: "./checkpoints/amb3r.pt"
+  seed: 42
+  lr: 1.0e-4           # Lower LR for fine-tuning pre-trained SE
+  min_lr: 1.0e-6
+  weight_decay: 0.05
+  epochs: 30
+  batch_size: 1
+  accum_iter: 6
+  warmup_epochs: 1
+  amp: "bf16"
+  num_workers: 1
+  num_workers_test: 0
+
+output_dir: "./outputs/exp_se"
