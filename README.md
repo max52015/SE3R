@@ -1,4 +1,4 @@
-# SE3R: Multi-View-Aware Squeeze-and-Excitation for Parameter-Efficient 3D Reconstruction
+# SE3R: Multiview-Aware Squeeze-and-Excitation for Parameter-Efficient 3D Reconstruction
 ### I-Han Cho, Shih-Yao Su, [Ming-Ching Chang](https://www.albany.edu/faculty/mchang2/), and [Jhih-Ciang Wu](https://jhih-ciang.github.io/)
 
 SE3R adapts the frozen AMB3R front end with Multi-View-Aware Squeeze-and-Excitation (MVSE) modules. The released training configuration follows the implementation described in the SE3R supplementary material.
